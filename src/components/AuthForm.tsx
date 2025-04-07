@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useToast } from "./ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { CardContent, CardFooter } from "./ui/card";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 
+
 type Props = {
   type: "login" | "signup";
 };
@@ -17,12 +18,47 @@ type Props = {
 function AuthForm({ type }: Props) {
   const isLoginForm = type === "login";
   const router = useRouter();
-  const toast = useToast();
+  const {toast} = useToast();
+
 
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = (formData: FormData) => {
-    console.log("Form submitted", formData);
+    startTransition(async () => {
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
+
+      let errorMessage ;
+      let title;
+      let description;
+
+      if(isLoginForm) {
+        errorMessage = (await LoginAction(email, password)).error;
+        title = "Login in";
+        description = "Login successfully";
+      }else {
+        errorMessage = (await SignUpAction(email, password)).error;
+        title = "Signup in";
+        description = "check your email for verification link";
+      }
+
+      if (errorMessage) {
+        toast({
+          title: title,
+          description: errorMessage,
+          variant: "destructive",
+        });
+        router.replace("/");
+      } else {
+        toast({
+          title: title,
+          description: description,
+          variant: "default",
+        });
+        
+      }
+
+    }
   };
 
   return (
