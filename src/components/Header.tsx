@@ -6,7 +6,7 @@ import { DarkModeToggle } from "./DarkModeToggle";
 import LogoutButton from "./LogoutButton";
 
 function Header() {
-  const user = null; // Replace with actual user data if needed
+  const user = 1; // Replace with actual user data if needed
 
   return (
     <header
@@ -31,11 +31,13 @@ function Header() {
           <LogoutButton />
         ) : (
           <>
-            <Button asChild variant="outline" className="hidden sm:inline-flex">
-              <Link href={"/register"}>Register</Link>
-            </Button>
             <Button asChild>
-              <Link href={"/login"}>Login</Link>
+              <Link href="/sign-up" className="hidden sm:block">
+                Sign Up
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/login">Login</Link>
             </Button>
           </>
         )}
