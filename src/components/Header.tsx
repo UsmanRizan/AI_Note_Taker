@@ -4,9 +4,10 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { DarkModeToggle } from "./DarkModeToggle";
 import LogoutButton from "./LogoutButton";
+import { getUser } from "@/auth/server";
 
-function Header() {
-  const user = null; // Replace with actual user data if needed
+async function Header() {
+  const user = await getUser(); // Replace with actual user data if needed
 
   return (
     <header
