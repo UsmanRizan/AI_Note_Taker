@@ -6,7 +6,7 @@ import { DarkModeToggle } from "./DarkModeToggle";
 import LogoutButton from "./LogoutButton";
 
 function Header() {
-  const user = 1; // Replace with actual user data if needed
+  const user = null; // Replace with actual user data if needed
 
   return (
     <header
