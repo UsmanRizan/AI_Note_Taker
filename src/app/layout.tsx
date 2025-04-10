@@ -31,14 +31,6 @@ export default function RootLayout({
               <Header />
               <main className="flex flex-1 flex-col px-4 pt-10 xl:px-8">
                 {children}
-
-                {/* <div className="flex-1">{children}</div> */}
-                {/* <footer className="flex items-center justify-center py-4">
-                  <p className="text-sm text-muted-foreground">
-                    &copy; {new Date().getFullYear()} Goat Notes. All rights
-                    reserved.
-                  </p>
-                </footer> */}
               </main>
             </div>
           </SidebarProvider>
