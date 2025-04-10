@@ -9,13 +9,6 @@ function SignUpPage() {
           <CardTitle className="text-center text-3xl">SignUp</CardTitle>
         </CardHeader>
         <AuthForm type="signup" />
-
-        <div className="text-muted-foreground mt-4 text-center text-sm">
-          Already have an account?{" "}
-          <a href="/login" className="text-blue-500 hover:underline">
-            Login
-          </a>
-        </div>
       </Card>
     </div>
   );
